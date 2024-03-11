@@ -15,3 +15,22 @@ function ( A,D){
           continue;
 
 }
+
+balance += amount;
+
+if (amount < 0) {
+  monthlyPayments[month] = (monthlyPayments[month] || 0) + 1;
+}
+}
+
+for (let month = 1; month <= 12; month++) {
+    if (
+      (monthlyPayments[month] || 0) < 3 ||
+      sumByMonth(A, D, month) < 100
+    ) {
+      balance -= 5;
+    }
+  }
+
+  return balance;
+}
